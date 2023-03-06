@@ -1,0 +1,30 @@
+env:
+  name: business
+  description: Service for business implementations.
+
+logging:
+  disable_existing_loggers: True
+  version: 1
+  formatters:
+    formatter:
+      format: "[%(asctime)s] [%(levelname)s] [%(name)s]: %(message)s"
+  handlers:
+    console:
+      class: "logging.StreamHandler"
+      level: "INFO"
+      formatter: "formatter"
+  root:
+    level: "INFO"
+    handlers: ["console"]
+
+observability:
+  sentry:
+    log_level: "WARNING"
+    main:
+      sample_rate: 1.0
+      request_bodies: "always"
+      traces_sample_rate: 1.0
+    any:
+      sample_rate: 0.0
+      request_bodies: "always"
+      traces_sample_rate: 0.0
