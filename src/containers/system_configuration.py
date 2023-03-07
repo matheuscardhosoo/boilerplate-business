@@ -23,7 +23,7 @@ class SystemConfiguration(DeclarativeContainer):
         container.config.env.version.from_env("VERSION", __version__)
         container.config.logging.handlers.console.level.from_env("LOG_LEVEL", "INFO")
         container.config.logging.root.level.from_env("LOG_LEVEL", "INFO")
-        container.config.database.name.from_env("DB_NAME", "business-test")
+        container.config.database.name.from_env("DB_NAME", "boilerplate-business-test")
         container.config.database.uri.from_env("DB_URI", "mongodb://localhost:27017")
         container.config.observability.sentry.dsn.from_env("SENTRY_DSN", None)
         container.config.observability.sentry.release.from_env("SENTRY_RELEASE", None)

@@ -1,5 +1,5 @@
 env:
-  name: business
+  name: boilerplate-business
   description: Service for business implementations.
 
 logging:

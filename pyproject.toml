@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "business"
+name = "boilerplate-business"
 version = "0.0.0"
 description = "Boilerplate for business services that use MongoDB as database."
 authors = ["Matheus"]
