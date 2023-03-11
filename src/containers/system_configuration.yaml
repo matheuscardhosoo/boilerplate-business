@@ -7,7 +7,7 @@ logging:
   version: 1
   formatters:
     formatter:
-      format: "[%(asctime)s] [%(levelname)s] [%(name)s]: %(message)s"
+      format: "[%(asctime)s] [%(levelname)s] [${ENV}] [${SERVICE_NAME}] [%(name)s]: %(message)s"
   handlers:
     console:
       class: "logging.StreamHandler"
@@ -16,15 +16,3 @@ logging:
   root:
     level: "INFO"
     handlers: ["console"]
-
-observability:
-  sentry:
-    log_level: "WARNING"
-    main:
-      sample_rate: 1.0
-      request_bodies: "always"
-      traces_sample_rate: 1.0
-    any:
-      sample_rate: 0.0
-      request_bodies: "always"
-      traces_sample_rate: 0.0

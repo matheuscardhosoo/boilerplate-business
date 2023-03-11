@@ -28,8 +28,8 @@ class FrameworksLayer(DeclarativeContainer):
     database_manager: Singleton[MotorManager] = Singleton(
         MotorManager,
         application_name=config.env.name,
-        database_name=config.database.database_name,
-        db_uri=config.database.uri,
+        database_name=config.database.name,
+        database_uri=config.database.uri,
     )
 
     @classmethod
