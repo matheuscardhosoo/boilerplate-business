@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+
+  boilerplate-business-mongo:
+    image: "mongo"
+    container_name: boilerplate-business-mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: boilerplate-business-user
+      MONGO_INITDB_ROOT_PASSWORD: boilerplate-business-password
+      MONGO_INITDB_DATABASE: boilerplate-business
+    networks:
+      - compose-bridge
+
+  boilerplate-business:
+    depends_on:
+      - boilerplate-business-mongo
+    build: .
+    container_name: boilerplate-business-app
+    environment:
+      ENV: test
+      DEBUG: false
+      DB_NAME: "boilerplate-business"
+      DB_URI: "mongodb://boilerplate-business-user:boilerplate-business-password@boilerplate-business-mongo:27017/boilerplate-business?authSource=admin"
+    networks:
+      - compose-bridge
+    ports:
+      - "8000:8000"
+
+networks:
+  compose-bridge:
+    driver: bridge

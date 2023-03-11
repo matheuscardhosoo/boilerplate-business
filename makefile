@@ -14,10 +14,14 @@ pre_commit:
 requirements:
 	poetry export -f requirements.txt > requirements.txt --without-hashes
 
+build:
+	docker build -t boilerplate-business .
+
 run:
-	export CONFIG_PATH="containers/system_configuration.yaml" && \
-	poetry run gunicorn -w 3 -k uvicorn.workers.UvicornWorker --timeout 7000 --preload --capture-output --chdir src main:app
+	docker run -it --mount source=boilerplate-business,target=/app boilerplate-business
 
 debug:
 	export CONFIG_PATH="src/containers/system_configuration.yaml" && \
+	export ENV="test" && \
+	export SERVICE_NAME="boilerplate-business" && \
 	poetry run uvicorn --host 127.0.0.1 --port 8000 --reload --log-level debug --app-dir src main:app
